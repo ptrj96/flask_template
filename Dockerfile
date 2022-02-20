@@ -11,13 +11,14 @@ FROM base AS pipenv-deps
 RUN pip install pipenv
 RUN apt-get update && apt-get install -y --no-install-recommends gcc
 
-# Install python dependencies
+# Create requirements.txt
 COPY Pipfile .
 COPY Pipfile.lock .
 RUN pipenv lock -r > requirements.txt
 
 FROM base AS run
 
+# Install dependencies into container
 COPY --from=pipenv-deps /app/requirements.txt .
 RUN pip install -r requirements.txt
 
