@@ -1,0 +1,23 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: "Flask Template"
+basePath: "/api/v1"
+tags:
+  - name: "hello"
+schemes:
+  - "http"
+consumes:
+  - "application/json"
+produces:
+  - "application/json"
+paths:
+  /helloworld:
+    get:
+      tags:
+        - "hello"
+      summary: "Returns a hello world"
+      operationId: "api.hello.hello_world"
+      responses:
+        200:
+          description: "Success"
